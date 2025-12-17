@@ -10,6 +10,7 @@ You will need to add the repo as a dependency in your package.json file:
 "dependencies": {
     "adl": "git+ssh://git@github.com:bastecklein/adl.git#main"
 }
+```
 
 The adl module also imports icon fonts and stylesheets into your project.  The module is designed to be used with [webpack](https://github.com/webpack/webpack) and utilizes the style-loader and css-loader dependencies.
 
