@@ -1584,7 +1584,13 @@ function cleanFontIcon(icon) {
     }
 
     const iconId = icons[icon];
+
+    if(!iconId || isNaN(iconId)) {
+        return icon;
+    }
+
     const hex = decimalToHex(iconId);
+
     icon = "&#x" + hex + ";";
 
     return icon;
