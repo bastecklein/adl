@@ -48,6 +48,8 @@ module: {
     import adl from "adl";
 ```
 
+Complete API documentation and function demos can be found at the [Ape Design Language demo website](https://design.ape-apps.com/).
+
 ## Icon Font
 
 adl uses the **FluentSystemIcons-Resizable.ttf** icon font from [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons).
