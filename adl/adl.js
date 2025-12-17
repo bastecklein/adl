@@ -113,6 +113,7 @@ function setupDynamicStyles() {
     }
 
     let tintColor = adlTheme;
+    let tintColorAlt = adlTheme;
     let tintFG = "#000000";
 
     const rgb = hexToRGB(adlTheme);
@@ -123,22 +124,39 @@ function setupDynamicStyles() {
         b: 0
     };
 
-    if(getOverallThemeLight()) {
+    tintColorAlt = {
+        r: 0,
+        g: 0,
+        b: 0
+    };
 
-        const blendAmt = 0.92;
+
+    if(getOverallThemeLight()) {
+        const blendAmt = 0.96;
 
         tintColor.r = normalizeBlend(rgb.r, blendAmt);
         tintColor.g = normalizeBlend(rgb.g, blendAmt);
         tintColor.b = normalizeBlend(rgb.b, blendAmt);
+
+        const blendAmtAlt = 0.86;
+
+        tintColorAlt.r = normalizeBlend(rgb.r, blendAmtAlt);
+        tintColorAlt.g = normalizeBlend(rgb.g, blendAmtAlt);
+        tintColorAlt.b = normalizeBlend(rgb.b, blendAmtAlt);
     } else {
         tintColor.r = normalizeOffset(weighColors(rgb.r, 19, 0.05, 0.8), 10);
         tintColor.g = normalizeOffset(weighColors(rgb.g, 20, 0.05, 0.8), 10);
         tintColor.b = normalizeOffset(weighColors(rgb.b, 21, 0.05, 0.8), 10);
 
+        tintColorAlt.r = normalizeOffset(weighColors(rgb.r, 19, 0.1, 0.7), 15);
+        tintColorAlt.g = normalizeOffset(weighColors(rgb.g, 20, 0.1, 0.7), 15);
+        tintColorAlt.b = normalizeOffset(weighColors(rgb.b, 21, 0.1, 0.7), 15);
+
         tintFG = "#ffffff";
     }
 
     const tintHex = rgbToHex(tintColor.r, tintColor.g, tintColor.b);
+    const altHex = rgbToHex(tintColorAlt.r, tintColorAlt.g, tintColorAlt.b);
 
     const metaThemeColor = document.querySelector("meta[name=theme-color]");
     
@@ -168,7 +186,7 @@ function setupDynamicStyles() {
     dynStyle += " .adl-toast, input.adl[type=number], input.adl[type=password], input.adl[type=text], textarea.adl { border-bottom: 2px solid " + adlTheme + "; } ";
     dynStyle += " .adlGamepadSelected { outline: 2px solid " + adlTheme +  "; background-color: rgba(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ", 0.2); } ";
     dynStyle += " .adl-menu-item:hover .adl-icon, .adl-list-item:hover .adl-icon, .adl-toolbar-button:hover .adl-icon, .adl-sidebar-item:hover .adl-icon, .adl-toast-action { color: " + adlTheme + "; } ";
-    dynStyle += " .adl-backdrop, .adl-tint { background-color: " + tintHex + "; color: " + tintFG + "; } ";
+    dynStyle += " .adl-backdrop, .adl-tint { background-color: " + tintHex + "; color: " + tintFG + "; background: linear-gradient(180deg, " + tintHex + ", " + altHex + "); } ";
     dynStyle += " .adl-codeblock { background-color: " + adlTheme + "; color: " + styleFG + "; } ";
 
     adlDynamicStyle.innerHTML = dynStyle;
