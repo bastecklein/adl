@@ -1,0 +1,37 @@
+{
+    "name": "adl",
+    "version": "1.0.0",
+    "description": "Ape Design Language module library",
+    "keywords": ["ui", "library", "ape apps"],
+    "homepage": "https://www.ape-apps.com",
+    "bugs": {
+        "email": "support@ape-apps.com"
+    },
+    "author": {
+        "name": "Ape Apps",
+        "email": "support@ape-apps.com",
+        "url": "https://www.ape-apps.com"
+    },
+    "funding": {
+        "type": "patreon",
+        "url": "https://www.patreon.com/apeapps"
+    },
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bastecklein/adl"
+    },
+    "main": "adl/adl.js",
+    "config": {},
+    "dependencies": {
+        "common-helpers": "git+ssh://git@github.com:bastecklein/common-helpers.git#main"
+    },
+    "devDependencies": {
+        "@eslint/js": "*",
+        "@eslint/json": "*",
+        "eslint": "*",
+        "globals": "*"
+    },
+    "private": false,
+    "type": "module"
+}
