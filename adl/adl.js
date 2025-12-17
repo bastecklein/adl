@@ -162,7 +162,6 @@ function setupDynamicStyles() {
         if(window.matchMedia('(display-mode: tabbed)').matches) {
             dynStyle += " body { background-color: " + tintHex + "; } ";
         }
-        
     }
 
     dynStyle += " a { color: " + adlTheme + "; }";
@@ -1009,6 +1008,18 @@ function initADL() {
     document.body.classList.add("adl");
 
     adlIsInit = true;
+
+    const fontIcons = document.querySelectorAll(".adl-font-icon");
+
+    for(let i = 0; i < fontIcons.length; i++) {
+        const icn = fontIcons[i];
+
+        const value = icn.innerHTML.trim();
+
+        const glyph = cleanFontIcon(value);
+
+        icn.innerHTML = glyph;
+    }
 }
 
 function onPointerDown(e) {
