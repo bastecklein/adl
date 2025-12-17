@@ -20,6 +20,7 @@ The adl module also imports icon fonts and stylesheets into your project.  The m
     "css-loader": "*",
     "style-loader": "*"
 }
+```
 
 You will need to add the following to the **module** section of your webpack config:
 
