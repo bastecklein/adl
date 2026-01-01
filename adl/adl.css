@@ -312,6 +312,8 @@ textarea.adl {
     app-region: drag;
     -webkit-app-region: drag;
     padding-top: var(--sait);
+    padding-left: var(--sail);
+    padding-right: var(--sair);
     padding-left: calc(var(--sail) + env(titlebar-area-x));
     padding-right: calc(100% - (env(titlebar-area-x) + env(titlebar-area-width) + var(--sair)));
 }
