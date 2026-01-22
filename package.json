@@ -27,7 +27,9 @@
         "import": "./adl/adl.js"
     },
     "config": {},
-    "dependencies": {},
+    "dependencies": {
+        "common-helpers": "git+ssh://git@github.com:bastecklein/common-helpers.git#main"
+    },
     "devDependencies": {
         "@eslint/js": "*",
         "@eslint/json": "*",
