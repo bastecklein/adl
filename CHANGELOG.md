@@ -1,5 +1,16 @@
 # adl changelog
 
+## 3.3.0 - 2026-01-22
+
+### Changed
+
+- Updated fluentui-system-icons to v1.1.317
+    - (https://github.com/microsoft/fluentui-system-icons/tree/main/fonts)
+
+### Added
+
+- Support for non-webpack based usage
+
 ## 3.2.0 - 2025-12-17
 
 ### Changed

@@ -4,7 +4,7 @@ Ape Design Language module library
 
 ## Setup
 
-You will need to add the repo as a dependency in your package.json file:
+Add the repo as a dependency in your package.json file:
 
 ```json
 "dependencies": {
@@ -12,7 +12,9 @@ You will need to add the repo as a dependency in your package.json file:
 }
 ```
 
-The adl module also imports icon fonts and stylesheets into your project.  The module is designed to be used with [webpack](https://github.com/webpack/webpack) and utilizes the style-loader and css-loader dependencies.
+### For Webpack-based Projects
+
+The adl module imports icon fonts and stylesheets. When using [webpack](https://github.com/webpack/webpack), add the style-loader and css-loader dependencies:
 
 ```json
 "devDependencies": {
@@ -22,7 +24,7 @@ The adl module also imports icon fonts and stylesheets into your project.  The m
 }
 ```
 
-You will need to add the following to the **module** section of your webpack config:
+Add the following to the **module** section of your webpack config:
 
 ```javascript
 module: {
@@ -42,10 +44,33 @@ module: {
 }
 ```
 
+### For Non-Webpack Node.js Projects
+
+No special configuration needed. The module will automatically use the CommonJS wrapper.
+
 ## Usage
 
+### ES Module (Webpack/Browser)
+
 ```javascript
-    import adl from "adl";
+import adl from "adl";
+```
+
+### CommonJS (Node.js without Webpack)
+
+```javascript
+const adl = require("adl");
+```
+
+### Async Usage (if needed)
+
+Since the CommonJS wrapper uses dynamic imports, you may need to handle it as a promise in some environments:
+
+```javascript
+const adlPromise = require("adl");
+adlPromise.then(adl => {
+    // Use adl module here
+});
 ```
 
 Complete API documentation and function demos can be found at the [Ape Design Language demo website](https://design.ape-apps.com/).

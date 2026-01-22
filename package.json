@@ -1,6 +1,6 @@
 {
     "name": "adl",
-    "version": "3.2.0",
+    "version": "3.3.0",
     "description": "Ape Design Language module library",
     "keywords": ["ui", "library", "ape apps"],
     "homepage": "https://www.ape-apps.com",
@@ -21,11 +21,13 @@
         "type": "git",
         "url": "https://github.com/bastecklein/adl"
     },
-    "main": "adl/adl.js",
-    "config": {},
-    "dependencies": {
-        "common-helpers": "git+ssh://git@github.com:bastecklein/common-helpers.git#main"
+    "main": "adl/adl.cjs",
+    "exports": {
+        "require": "./adl/adl.cjs",
+        "import": "./adl/adl.js"
     },
+    "config": {},
+    "dependencies": {},
     "devDependencies": {
         "@eslint/js": "*",
         "@eslint/json": "*",
