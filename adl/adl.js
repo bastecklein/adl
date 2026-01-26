@@ -355,8 +355,14 @@ function createToolbarElement(item) {
     if(item.label) {
         const label = createClassedElement("div", "adl-toolbar-label", item.label);
 
-        if(item.type == "title" && item.centered) {
-            label.classList.add("adl-toolbar-title-centered");
+        if(item.type == "title") {
+
+            label.classList.add("adl-toolbar-title");
+
+            if(item.centered) {
+                label.classList.add("adl-toolbar-title-centered");
+            }
+            
         }
 
         element.appendChild(label); 

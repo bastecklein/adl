@@ -356,6 +356,10 @@ textarea.adl {
     gap: 12px;
 }
 
+.adl-toolbar-title {
+    font-size: 12px;
+}
+
 .adl-toolbar-title-centered {
     position: fixed;
     left: 50%;
