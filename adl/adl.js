@@ -66,7 +66,19 @@ let adlIsInit = false;
 let adlDynamicStyle = null;
 let toastHolder = null;
 let pendingDialogs = [];
-let usingMica = false;
+let transparentWindow = false;
+
+if(window.wacUtils2) {
+    window.wacUtils2.ipcInvoke("supportsTransparency", null).then(function(supports) {
+        if(supports) {
+            transparentWindow = true;
+        }
+    });
+}
+
+if(window.Android && window.Android.supportsTransparency) {
+    transparentWindow = window.Android.supportsTransparency();
+}
 
 window.addEventListener("focus", function() {
     setTheme(adlTheme, forceTheme);
@@ -80,7 +92,7 @@ if(window.chrome && window.chrome.webview && window.chrome.webview.postMessage) 
 
             if(type == "getSupportsMicaResponse") {
                 if(data && data.data && data.data == "1") {
-                    usingMica = true;
+                    transparentWindow = true;
                     setTheme(adlTheme, forceTheme);
                 }
             }
@@ -203,19 +215,7 @@ function setupDynamicStyles() {
         dynStyle += " body { height: 100%; width: 100%; margin: 0px; padding: 0px; overflow: hidden; } ";
     }
 
-    let transparentWindow = usingMica;
-
-    if(window.wacUtils2) {
-        window.wacUtils2.ipcInvoke("supportsTransparency", null).then(function(supports) {
-            if(supports) {
-                transparentWindow = true;
-            }
-        });
-    }
-
-    if(window.Android && window.Android.supportsTransparency) {
-        transparentWindow = window.Android.supportsTransparency();
-    }
+    
 
     if(transparentWindow) {
         dynStyle += " html, body { background-color: transparent !important; background: transparent !important; } ";
