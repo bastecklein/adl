@@ -356,6 +356,12 @@ textarea.adl {
     gap: 12px;
 }
 
+.adl-toolbar-title-centered {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .adl-toolbar-button {
     border-radius: calc(var(--commonRadius) / 2);
     transition: 0.2s;

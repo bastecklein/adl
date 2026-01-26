@@ -1,5 +1,12 @@
 # adl changelog
 
+## 3.3.1 - 2026-01-26
+
+### Added
+
+- Support for Ape Apps Core transparency
+- **centered** option for toolbar title elements
+
 ## 3.3.0 - 2026-01-22
 
 ### Changed

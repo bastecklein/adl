@@ -1,6 +1,6 @@
 {
     "name": "adl",
-    "version": "3.3.0",
+    "version": "3.3.1",
     "description": "Ape Design Language module library",
     "keywords": ["ui", "library", "ape apps"],
     "homepage": "https://www.ape-apps.com",
@@ -31,6 +31,7 @@
         "common-helpers": "git+ssh://git@github.com:bastecklein/common-helpers.git#main"
     },
     "devDependencies": {
+        "@eslint/css": "*",
         "@eslint/js": "*",
         "@eslint/json": "*",
         "eslint": "*",

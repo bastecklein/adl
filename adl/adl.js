@@ -66,6 +66,32 @@ let adlIsInit = false;
 let adlDynamicStyle = null;
 let toastHolder = null;
 let pendingDialogs = [];
+let usingMica = false;
+
+window.addEventListener("focus", function() {
+    setTheme(adlTheme, forceTheme);
+});
+
+if(window.chrome && window.chrome.webview && window.chrome.webview.postMessage) {
+    window.chrome.webview.addEventListener("message", function(e){
+        if(e && e.data && e.data.type) {
+            const data = e.data;
+            const type = data.type;
+
+            if(type == "getSupportsMicaResponse") {
+                if(data && data.data && data.data == "1") {
+                    usingMica = true;
+                    setTheme(adlTheme, forceTheme);
+                }
+            }
+        }
+    });
+
+    window.chrome.webview.postMessage({
+        type: "getSupportsMica",
+        data: ""
+    });
+}
 
 /**
  * @deprecated
@@ -74,21 +100,14 @@ function addIonicons() {
     console.warn("ADL Ion Icon support depreciated");
 }
 
-export function setTheme(color, forceThemeLightOrDark) {
+export function setTheme(color = "#1565C0", forceThemeLightOrDark = null) {
 
     if(!adlIsInit) {
         initADL();
     }
 
-    if(color) {
-        adlTheme = color;
-    }
-
-    if(forceThemeLightOrDark) {
-        forceTheme = forceThemeLightOrDark;
-    }
-
-    
+    adlTheme = color;
+    forceTheme = forceThemeLightOrDark;
 
     setupDynamicStyles();
 
@@ -130,7 +149,6 @@ function setupDynamicStyles() {
         b: 0
     };
 
-
     if(getOverallThemeLight()) {
         const blendAmt = 0.96;
 
@@ -171,7 +189,6 @@ function setupDynamicStyles() {
         } else {
             metaThemeColor.setAttribute("content", tintHex);
         }
-        
     }
 
     let dynStyle = "* { accent-color: " + adlTheme + "; } ";
@@ -182,11 +199,39 @@ function setupDynamicStyles() {
         }
     }
 
+    if(backdrop) {
+        dynStyle += " body { height: 100%; width: 100%; margin: 0px; padding: 0px; overflow: hidden; } ";
+    }
+
+    let transparentWindow = usingMica;
+
+    if(window.wacUtils2) {
+        window.wacUtils2.ipcInvoke("supportsTransparency", null).then(function(supports) {
+            if(supports) {
+                transparentWindow = true;
+            }
+        });
+    }
+
+    if(window.Android && window.Android.supportsTransparency) {
+        transparentWindow = window.Android.supportsTransparency();
+    }
+
+    if(transparentWindow) {
+        dynStyle += " html, body { background-color: transparent !important; background: transparent !important; } ";
+    }
+
     dynStyle += " a { color: " + adlTheme + "; }";
     dynStyle += " .adl-toast, input.adl[type=number], input.adl[type=password], input.adl[type=text], textarea.adl { border-bottom: 2px solid " + adlTheme + "; } ";
     dynStyle += " .adlGamepadSelected { outline: 2px solid " + adlTheme +  "; background-color: rgba(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ", 0.2); } ";
     dynStyle += " .adl-menu-item:hover .adl-icon, .adl-list-item:hover .adl-icon, .adl-toolbar-button:hover .adl-icon, .adl-sidebar-item:hover .adl-icon, .adl-toast-action { color: " + adlTheme + "; } ";
-    dynStyle += " .adl-backdrop, .adl-tint { background-color: " + tintHex + "; color: " + tintFG + "; background: linear-gradient(180deg, " + tintHex + ", " + altHex + "); } ";
+
+    if(transparentWindow) {
+        dynStyle += " .adl-backdrop, .adl-tint { background-color: transparent !important; color: " + tintFG + "; background: transparent !important; } ";
+    } else {
+        dynStyle += " .adl-backdrop, .adl-tint { background-color: " + tintHex + "; color: " + tintFG + "; background: linear-gradient(180deg, " + tintHex + ", " + altHex + "); } ";
+    }
+
     dynStyle += " .adl-codeblock { background-color: " + adlTheme + "; color: " + styleFG + "; } ";
 
     adlDynamicStyle.innerHTML = dynStyle;
@@ -309,11 +354,18 @@ function createToolbarElement(item) {
 
     if(item.label) {
         const label = createClassedElement("div", "adl-toolbar-label", item.label);
+
+        if(item.type == "title" && item.centered) {
+            label.classList.add("adl-toolbar-title-centered");
+        }
+
         element.appendChild(label); 
     }
 
     if(item.icon && item.label) {
         element.classList.add("adl-toolbar-item-icon-and-label");
+
+        
     }
 
     return element;
@@ -1095,15 +1147,15 @@ function isElementInsideDialog(element) {
 
 function isElementInsideAMenu(element) {
 
-        if(element.classList.contains("adl-menu")) {
-            return true;
-        }
+    if(element.classList.contains("adl-menu")) {
+        return true;
+    }
 
-        if(element.parentElement) {
-            return isElementInsideAMenu(element.parentElement);
-        }
+    if(element.parentElement) {
+        return isElementInsideAMenu(element.parentElement);
+    }
 
-        return false;
+    return false;
 }
 
 export function getOverallThemeLight() {
