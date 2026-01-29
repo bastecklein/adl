@@ -1724,6 +1724,13 @@ function spawnCustomPopup(customPopup, x, y) {
         }
     }
 
+    if(!customPopup.closePopup) {
+        customPopup.closePopup = function() {
+            element.innerHTML = "";
+            closeAllPopupMenus();
+        };
+    }
+
     return element;
 }
 
