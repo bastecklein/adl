@@ -337,6 +337,10 @@ function createToolbarElement(item) {
             if(item.menu) {
                 spawnMenu(item.menu, retData.x, retData.y);
             }
+
+            if(item.customPopup) {
+                spawnCustomPopup(item.customPopup, retData.x, retData.y);
+            }
         };
     }
 
@@ -1684,6 +1688,32 @@ function decimalToHex(d) {
     let hex = Number(d).toString(16);
     hex = "000000".substr(0, 6 - hex.length) + hex;
     return hex;
+}
+
+function spawnCustomPopup(element, x, y) {
+    if(!element) {
+        return;
+    }
+
+    document.body.appendChild(element);
+
+    const rect = element.getBoundingClientRect();
+
+    const w = rect.width;
+    const h = rect.height;
+
+    if(x + w > window.innerWidth) {
+        x = window.innerWidth - w;
+    }
+
+    if(y + h > window.innerHeight) {
+        y = window.innerHeight - h;
+    }
+
+    element.style.left = x + "px";
+    element.style.top = y + "px";
+
+    return element;
 }
 
 function spawnMenu(menu, x, y) {
