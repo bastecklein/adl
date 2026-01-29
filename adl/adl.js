@@ -1716,6 +1716,14 @@ function spawnCustomPopup(customPopup, x, y) {
     element.style.left = x + "px";
     element.style.top = y + "px";
 
+    if(customPopup.onPopup) {
+        try {
+            customPopup.onPopup();
+        } catch(ex) {
+            console.warn("Error in custom popup onPopup()", ex);
+        }
+    }
+
     return element;
 }
 
