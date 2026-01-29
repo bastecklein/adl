@@ -635,6 +635,7 @@ textarea.adl {
     .adl-backdrop, .adl-tint {
         background-color: transparent !important;
         position: initial;
+        background: transparent !important;
     }
 
     body.adlWithBackdrop {
