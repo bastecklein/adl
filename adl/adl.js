@@ -1690,10 +1690,13 @@ function decimalToHex(d) {
     return hex;
 }
 
-function spawnCustomPopup(element, x, y) {
-    if(!element) {
+function spawnCustomPopup(customPopup, x, y) {
+    if(!customPopup) {
         return;
     }
+
+    const element = createClassedElement("div", "adl-menu adlPadZone");
+    element.appendChild(customPopup);
 
     document.body.appendChild(element);
 
