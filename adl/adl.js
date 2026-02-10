@@ -128,6 +128,10 @@ export function setTheme(color = "#1565C0", forceThemeLightOrDark = null) {
     } else {
         document.body.classList.add("adlDark");
     }
+
+    if(window.wacUtils2) {
+        window.wacUtils2.ipcSend("forceAppTheme", forceTheme);
+    }
 }
 
 function setupDynamicStyles() {
