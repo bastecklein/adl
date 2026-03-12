@@ -209,6 +209,8 @@ function setupDynamicStyles() {
 
     let dynStyle = "* { accent-color: " + adlTheme + "; } ";
 
+     dynStyle += ":root { --adl-theme-color: " + adlTheme + "; --adl-theme-color-fg: " + styleFG + "; --adl-tint-color: " + tintHex + "; --adl-tint-color-alt: " + altHex + "; --adl-tint-color-fg: " + tintFG + "; } ";
+
     if(backdrop && metaThemeColor) {
         if(window.matchMedia('(display-mode: tabbed)').matches) {
             dynStyle += " body { background-color: " + tintHex + "; } ";
