@@ -338,6 +338,7 @@ textarea.adl {
     align-items: center;
     user-select: none;
     font-size: 14px;
+    padding: 0px 6px;
 }
 
 .adl-toolbar-item {
