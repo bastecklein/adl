@@ -23,8 +23,8 @@
     --transBG: rgba(255, 255, 255, 0.4);
     --standardBG: #ffffff;
     --hoverColor: rgba(200, 200, 200, 0.25);
-    --commonShadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    --commonBackdrop: saturate(2);
+    --commonShadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    --commonBackdrop: saturate(3);
 }
 
 .adlGamepadSelectable {
