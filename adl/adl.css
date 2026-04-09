@@ -692,3 +692,12 @@ textarea.adl {
         display: none;
     }
 }
+
+@media (display-mode: window-controls-overlay) {
+    .adl-main-app-toolbar .adl-toolbar-button {
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        background-color: transparent;
+    }
+}
