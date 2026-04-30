@@ -397,7 +397,7 @@ textarea.adl {
 }
 
 .adl-toolbar-button:hover {
-    outline: 2px solid var(--borderColor);
+    /*outline: 2px solid var(--borderColor);*/
     transform: scale(1.1);
 }
 
