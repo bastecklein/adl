@@ -209,7 +209,7 @@ function setupDynamicStyles() {
 
     let dynStyle = "* { accent-color: " + adlTheme + "; } ";
 
-     dynStyle += ":root { --adl-theme-color: " + adlTheme + "; --adl-theme-color-fg: " + styleFG + "; --adl-tint-color: " + tintHex + "; --adl-tint-color-alt: " + altHex + "; --adl-tint-color-fg: " + tintFG + "; } ";
+    dynStyle += ":root { --adl-theme-color: " + adlTheme + "; --adl-theme-color-fg: " + styleFG + "; --adl-tint-color: " + tintHex + "; --adl-tint-color-alt: " + altHex + "; --adl-tint-color-fg: " + tintFG + "; } ";
 
     if(backdrop && metaThemeColor) {
         if(window.matchMedia('(display-mode: tabbed)').matches) {
@@ -235,7 +235,7 @@ function setupDynamicStyles() {
     if(transparentWindow) {
         dynStyle += " .adl-backdrop, .adl-tint { background-color: transparent !important; color: " + tintFG + "; background: transparent !important; } ";
     } else {
-        dynStyle += " .adl-backdrop, .adl-tint { background-color: " + tintHex + "; color: " + tintFG + "; background: linear-gradient(180deg, " + tintHex + ", " + altHex + "); } ";
+        //dynStyle += " .adl-backdrop, .adl-tint { background-color: " + tintHex + "; color: " + tintFG + "; background: linear-gradient(180deg, " + tintHex + ", " + altHex + "); } ";
     }
 
     dynStyle += " .adl-codeblock { background-color: " + adlTheme + "; color: " + styleFG + "; } ";

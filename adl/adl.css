@@ -17,14 +17,14 @@
     --top-menu-padding: 24px;
     --top-menu-padding: max(24px, var(--sait));
     --top-menu-padding: max(24px, max(env(titlebar-area-height, 24px)), var(--sait));
-    --commonRadius: 18px;
+    --commonRadius: 12px;
     --flyoutWidth: 264px;
-    --borderColor: rgba(130, 130, 130, 0.1);
-    --transBG: rgba(255, 255, 255, 0.4);
+    --borderColor: rgba(130, 130, 130, 0.25);
+    --transBG: rgba(255, 255, 255, 0.75);
     --standardBG: #ffffff;
     --hoverColor: rgba(200, 200, 200, 0.25);
-    --commonShadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-    --commonBackdrop: saturate(3);
+    --commonShadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
+    --commonBackdrop: none;
 }
 
 .adlGamepadSelectable {
@@ -65,6 +65,12 @@ a:hover {
     padding: 12px;
     box-shadow: var(--commonShadow);
     backdrop-filter: var(--commonBackdrop);
+}
+
+.adl-backdrop, .adl-tint {
+    background-color: var(--adl-tint-color);
+    color: var(--adl-theme-color-fg);
+    background: linear-gradient(180deg, var(--adl-tint-color), var(--adl-tint-color-alt));
 }
 
 .adl-grid-wrapper {
@@ -374,12 +380,13 @@ textarea.adl {
 .adl-toolbar-button {
     border-radius: calc(var(--commonRadius) * 2);
     transition: 0.2s;
-    border: 1px solid var(--borderColor);
-    box-shadow: var(--commonShadow);
-    backdrop-filter: var(--commonBackdrop);
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
     margin: 6px 2px;
     padding: 2px 10px;
-    background-color: var(--transBG);
+    background-color: transparent;
+    outline-color: var(--borderColor);
 }
 
 .adl-toolbar-button.adl-toolbar-button-noaction {
@@ -390,7 +397,8 @@ textarea.adl {
 }
 
 .adl-toolbar-button:hover {
-    background-color: var(--hoverColor);
+    outline: 2px solid var(--borderColor);
+    transform: scale(1.1);
 }
 
 .adl-toolbar-button:active {
@@ -601,7 +609,7 @@ textarea.adl {
     padding: 12px;
     border-radius: var(--commonRadius);
     border: 1px solid var(--borderColor);
-    box-shadow: var(--commonShadow);
+    /*box-shadow: var(--commonShadow);*/
     backdrop-filter: var(--commonBackdrop);
 }
 
