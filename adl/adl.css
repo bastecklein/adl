@@ -69,7 +69,7 @@ a:hover {
 
 .adl-backdrop, .adl-tint {
     background-color: var(--adl-tint-color);
-    color: var(--adl-theme-color-fg);
+    color: var(--adl-tint-color-fg);
     background: linear-gradient(180deg, var(--adl-tint-color), var(--adl-tint-color-alt));
 }
 
