@@ -599,6 +599,10 @@ export function showList(options) {
                 text: options.cancelText || "Dismiss",
                 func: function() {
                     dismissDialogWindow();
+
+                    if(options.onSelection) {
+                        options.onSelection(null);
+                    }
                 }
             }
         ];
