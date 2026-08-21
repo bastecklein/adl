@@ -51,6 +51,7 @@ a {
     text-decoration: none;
     font-weight: 600;
     transition: 0.2s;
+    color: var(--adl-theme-color, #0078D4);
 }
 
 a:hover {
@@ -72,6 +73,8 @@ a:hover {
     color: var(--adl-tint-color-fg);
     background: linear-gradient(180deg, var(--adl-tint-color), var(--adl-tint-color-alt));
 }
+
+
 
 .adl-grid-wrapper {
     position: fixed;
@@ -634,6 +637,18 @@ textarea.adl {
 
 .adl-sidebar-item-title {
     font-size: 14px;
+}
+
+.adl-toast, input.adl[type=number], input.adl[type=password], input.adl[type=text], textarea.adl { 
+    border-bottom: 2px solid var(--adl-theme-color, #0078D4); 
+}
+
+.adlGamepadSelected {
+    outline: 2px solid var(--adl-theme-color, #0078D4);
+}
+
+.adl-menu-item:hover .adl-icon, .adl-list-item:hover .adl-icon, .adl-toolbar-button:hover .adl-icon, .adl-sidebar-item:hover .adl-icon, .adl-toast-action {
+    color: var(--adl-theme-color, #0078D4);
 }
 
 @media (max-height: 500px) {

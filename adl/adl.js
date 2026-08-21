@@ -221,21 +221,9 @@ function setupDynamicStyles() {
         dynStyle += " body { height: 100%; width: 100%; margin: 0px; padding: 0px; overflow: hidden; } ";
     }
 
-    
-
     if(transparentWindow) {
         dynStyle += " html, body { background-color: transparent !important; background: transparent !important; } ";
-    }
-
-    dynStyle += " a { color: " + adlTheme + "; }";
-    dynStyle += " .adl-toast, input.adl[type=number], input.adl[type=password], input.adl[type=text], textarea.adl { border-bottom: 2px solid " + adlTheme + "; } ";
-    dynStyle += " .adlGamepadSelected { outline: 2px solid " + adlTheme +  "; background-color: rgba(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ", 0.2); } ";
-    dynStyle += " .adl-menu-item:hover .adl-icon, .adl-list-item:hover .adl-icon, .adl-toolbar-button:hover .adl-icon, .adl-sidebar-item:hover .adl-icon, .adl-toast-action { color: " + adlTheme + "; } ";
-
-    if(transparentWindow) {
         dynStyle += " .adl-backdrop, .adl-tint { background-color: transparent !important; color: " + tintFG + "; background: transparent !important; } ";
-    } else {
-        //dynStyle += " .adl-backdrop, .adl-tint { background-color: " + tintHex + "; color: " + tintFG + "; background: linear-gradient(180deg, " + tintHex + ", " + altHex + "); } ";
     }
 
     dynStyle += " .adl-codeblock { background-color: " + adlTheme + "; color: " + styleFG + "; } ";
