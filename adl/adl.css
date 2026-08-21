@@ -644,7 +644,7 @@ textarea.adl {
 }
 
 .adlGamepadSelected {
-    outline: 2px solid var(--adl-theme-color, #0078D4);
+    outline: 2px solid var(--adl-theme-color, #0078D4) !important;
 }
 
 .adl-menu-item:hover .adl-icon, .adl-list-item:hover .adl-icon, .adl-toolbar-button:hover .adl-icon, .adl-sidebar-item:hover .adl-icon, .adl-toast-action {
