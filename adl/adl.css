@@ -315,6 +315,7 @@ textarea.adl {
 .adl-dialog-buttons {
     text-align: right;
     margin-top: 12px;
+    line-height: 38px;
 }
 
 .adl-dialog-buttons button {
