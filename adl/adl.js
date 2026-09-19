@@ -711,6 +711,10 @@ export function showDialog(options) {
 
     if(!adlDialog && !options.holder) {
         adlDialog = createClassedElement("dialog", "adl adl-dialog adlPadZone");
+        adlDialog.addEventListener("cancel", function(event) {
+            event.preventDefault();
+            dismissDialogWindow();
+        });
         document.body.appendChild(adlDialog);
     }
 
