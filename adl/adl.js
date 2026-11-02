@@ -1744,6 +1744,11 @@ function spawnMenu(menu, x, y) {
 
     const element = createClassedElement("div", "adl-menu adlPadZone");
 
+    // A pointer-up popup can become the target of the same click's contextmenu.
+    element.addEventListener("contextmenu", function(e) {
+        e.preventDefault();
+    });
+
     if(menu.title) {
         element.appendChild(createClassedElement("div", "adl-menu-title", menu.title, menu.titleColor));
     }

@@ -75,6 +75,15 @@ adlPromise.then(adl => {
 
 Complete API documentation and function demos can be found at the [Ape Design Language demo website](https://design.ape-apps.com/).
 
+## Popup menus
+
+Standard popup menus (including toolbar menus and submenus) suppress the native
+browser context menu on their contents. This also covers menus opened on
+pointer release, before the browser dispatches `contextmenu`. Native menus
+outside ADL menus and inside custom popup content are unchanged.
+
+Run the focused regression tests with `node --test test/context-menu.test.cjs`.
+
 ## Icon Font
 
 adl uses the **FluentSystemIcons-Resizable.ttf** icon font from [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons).
